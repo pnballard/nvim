@@ -85,11 +85,11 @@ return packer.startup(function(use)
 --    use "rafamadriz/friendly-snippets"
 --
 --    -- LSP
---    use "neovim/nvim-lspconfig"
+    use "neovim/nvim-lspconfig"
+    use "hrsh7th/cmp-nvim-lsp"
 ----  use "williamboman/nvim-lsp-installer"
 ----  use "williamboman/mason.nvim"
 ----  use "williamboman/mason-lspconfig.nvim"
---    use "hrsh7th/cmp-nvim-lsp"
 ----  use "VonHeikemen/lsp-zero.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim

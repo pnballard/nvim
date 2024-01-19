@@ -5,34 +5,34 @@ local lspconfig= require('lspconfig')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
---vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-lspconfig.pylsp.setup {
-    settings = {
-        pylsp = {
-            plugins = {
-                pycodestyle = {
-                    maxLineLength = 85
-                }
-            }
-        }
-    }
-}
-
--- C lsps require a project file, use ctags and linting instead
---lspconfig.clangd.setup { }
-
--- Note - Needs a vhdl_ls.toml project file at project root
-lspconfig.vhdl_ls.setup { }
-
-lspconfig.perlls.setup { }
-
-lspconfig.verible.setup {
-    root_dir = function(fname)
-        return vim.loop.cwd()
-    end,
-}
+-- -- Global mappings.
+-- -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- --vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+-- lspconfig.pylsp.setup {
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 pycodestyle = {
+--                     maxLineLength = 85
+--                 }
+--             }
+--         }
+--     }
+-- }
+-- 
+-- -- C lsps require a project file, use ctags and linting instead
+-- --lspconfig.clangd.setup { }
+-- 
+-- -- Note - Needs a vhdl_ls.toml project file at project root
+-- lspconfig.vhdl_ls.setup { }
+-- 
+-- lspconfig.perlls.setup { }
+-- 
+-- lspconfig.verible.setup {
+--     root_dir = function(fname)
+--         return vim.loop.cwd()
+--     end,
+-- }
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
