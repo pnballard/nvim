@@ -1,38 +1,56 @@
--- FIXME - enabling debug as I set up different servers
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 local lspconfig= require('lspconfig')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- -- Global mappings.
--- -- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- --vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
--- lspconfig.pylsp.setup {
---     settings = {
---         pylsp = {
---             plugins = {
---                 pycodestyle = {
---                     maxLineLength = 85
---                 }
---             }
---         }
---     }
--- }
--- 
+lspconfig.pylsp.setup {
+    capabilities = capabilities,
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    maxLineLength = 85
+                }
+            }
+        }
+    }
+}
+--
 -- -- C lsps require a project file, use ctags and linting instead
 -- --lspconfig.clangd.setup { }
--- 
--- -- Note - Needs a vhdl_ls.toml project file at project root
--- lspconfig.vhdl_ls.setup { }
--- 
--- lspconfig.perlls.setup { }
--- 
--- lspconfig.verible.setup {
---     root_dir = function(fname)
---         return vim.loop.cwd()
---     end,
--- }
+
+lspconfig.lua_ls.setup {
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+}
+
+-- Note - Needs a vhdl_ls.toml project file at project root
+lspconfig.vhdl_ls.setup {
+    capabilities = capabilities,
+}
+
+lspconfig.perlls.setup {
+    capabilities = capabilities,
+}
+
+lspconfig.verible.setup {
+    capabilities = capabilities,
+    root_dir = function(_)
+        return vim.loop.cwd()
+    end,
+}
+
+lspconfig.lemminx.setup {
+    capabilities = capabilities,
+}
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -44,16 +62,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set({ 'n', 'v' }, '<leader>lca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<leader>lof', vim.diagnostic.open_float)
+        local nmap = function(keys, func, desc)
+            if desc then
+                desc = "LSP: " .. desc
+            end
+            vim.keymap.set('n', keys, func, {buffer = ev.buf, desc = desc })
+        end
+
+        nmap('gD', vim.lsp.buf.declaration, "[g]oto [D]eclaration")
+        nmap('gd', vim.lsp.buf.definition, "[g]oto [d]efinition")
+        nmap('gr', vim.lsp.buf.references, "[g]oto [r]eferences")
+        nmap('gi', vim.lsp.buf.implementation, "[g]oto [i]mplementation")
+        nmap('K', vim.lsp.buf.hover, "Hover Documentation")
+        nmap('<C-k>', vim.lsp.buf.signature_help, "Signature Documenation")
+        nmap('<leader>ca', vim.lsp.buf.code_action, "[c]ode [a]ction")
+        nmap('<leader>D', vim.lsp.buf.type_definition, "Type [D]efinition")
+        -- Create a command `:Format` local to the LSP buffer
+        vim.api.nvim_buf_create_user_command(ev.buf, "Format", function(_)
+            vim.lsp.buf.format()
+        end, { desc = "Format current buffer with LSP" })
     end,
 })

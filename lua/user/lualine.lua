@@ -3,14 +3,16 @@ if not status_ok then
     return
 end
 
-require('lualine').setup {
+lualine.setup {
   options = {
     icons_enabled = true,
+    -- auto seemed to flashy for me
 --    theme = 'auto',
     theme = 'gruvbox-material',
-   -- component_separators = { left = '', right = ''},
+    --component_separators = { left = '', right = ''},
     component_separators = { left = ' ', right = ' '},
-    section_separators = { left = '', right = ''},
+    --section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -28,6 +30,7 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
+    -- dont think I need fileformat
 --    lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_x = {'encoding', 'filetype'},
     lualine_y = {'progress'},

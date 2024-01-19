@@ -62,8 +62,6 @@ return packer.startup(function(use)
     use "nvim-treesitter/nvim-treesitter"
     use "p00f/nvim-ts-rainbow"
 --
---
---
 --    -- colorschemes
 --    use "ellisonleao/gruvbox.nvim"
 --    use "Mofiqul/vscode.nvim"
@@ -79,18 +77,17 @@ return packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-nvim-lua"
     use "delphinus/cmp-ctags"
---
---    -- snippets
---    use "L3MON4D3/LuaSnip"
---    use "rafamadriz/friendly-snippets"
---
+
+    -- snippets
+    use "L3MON4D3/LuaSnip"
+    use "rafamadriz/friendly-snippets"
+
 --    -- LSP
     use "neovim/nvim-lspconfig"
     use "hrsh7th/cmp-nvim-lsp"
-----  use "williamboman/nvim-lsp-installer"
-----  use "williamboman/mason.nvim"
-----  use "williamboman/mason-lspconfig.nvim"
-----  use "VonHeikemen/lsp-zero.nvim"
+--  use "williamboman/nvim-lsp-installer"
+--  use "williamboman/mason.nvim"
+--  use "williamboman/mason-lspconfig.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
