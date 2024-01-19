@@ -16,9 +16,4 @@ configs.setup {
         additional_vim_regex_highlighting = true,
     },
     indent = { enable = ture, disable = { "yaml" } },
-    rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
-    }
 }

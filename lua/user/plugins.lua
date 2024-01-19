@@ -44,34 +44,15 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
-    use "windwp/nvim-autopairs"
-    use "kyazdani42/nvim-web-devicons"
-    use "kyazdani42/nvim-tree.lua"
+
+    use "nvim-lualine/lualine.nvim"
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
-    use "nvim-lualine/lualine.nvim"
+    use "windwp/nvim-autopairs"
     use "ludovicchabant/vim-gutentags"
 
-    -- colorschemes
-    use "ellisonleao/gruvbox.nvim"
-    use "Mofiqul/vscode.nvim"
-    use "marko-cerovac/material.nvim"
-    use "rebelot/kanagawa.nvim"
-    use "rose-pine/neovim"
-    use "nyoom-engineering/oxocarbon.nvim"
-
-    -- cmp
-    use "hrsh7th/nvim-cmp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-cmdline"
-    use "saadparwaiz1/cmp_luasnip"
-    use "hrsh7th/cmp-nvim-lua"
-    use "delphinus/cmp-ctags"
-
-    -- snippets
-    use "L3MON4D3/LuaSnip"
-    use "rafamadriz/friendly-snippets"
+--    use "kyazdani42/nvim-web-devicons"
+    use "kyazdani42/nvim-tree.lua"
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -80,14 +61,36 @@ return packer.startup(function(use)
     -- Treesitter
     use "nvim-treesitter/nvim-treesitter"
     use "p00f/nvim-ts-rainbow"
-
-    -- LSP
-    use "neovim/nvim-lspconfig"
---  use "williamboman/nvim-lsp-installer"
---  use "williamboman/mason.nvim"
---  use "williamboman/mason-lspconfig.nvim"
-    use "hrsh7th/cmp-nvim-lsp"
---  use "VonHeikemen/lsp-zero.nvim"
+--
+--
+--
+--    -- colorschemes
+--    use "ellisonleao/gruvbox.nvim"
+--    use "Mofiqul/vscode.nvim"
+--    use "marko-cerovac/material.nvim"
+--    use "rebelot/kanagawa.nvim"
+--    use "nyoom-engineering/oxocarbon.nvim"
+--
+    -- cmp
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+    use "saadparwaiz1/cmp_luasnip"
+    use "hrsh7th/cmp-nvim-lua"
+    use "delphinus/cmp-ctags"
+--
+--    -- snippets
+--    use "L3MON4D3/LuaSnip"
+--    use "rafamadriz/friendly-snippets"
+--
+--    -- LSP
+--    use "neovim/nvim-lspconfig"
+----  use "williamboman/nvim-lsp-installer"
+----  use "williamboman/mason.nvim"
+----  use "williamboman/mason-lspconfig.nvim"
+--    use "hrsh7th/cmp-nvim-lsp"
+----  use "VonHeikemen/lsp-zero.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
