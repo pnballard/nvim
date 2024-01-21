@@ -1,6 +1,7 @@
--- vim.lsp.set_log_level("debug")
+-- FIXME - this slows down neovim, so enable only when debugging LSP issues
+vim.lsp.set_log_level("debug")
 
-local lspconfig= require('lspconfig')
+local lspconfig = require('lspconfig')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -10,8 +11,38 @@ lspconfig.pylsp.setup {
     settings = {
         pylsp = {
             plugins = {
-                pycodestyle = {
-                    maxLineLength = 85
+                ruff = {
+                    enabled = true, -- Enable the plugin
+                    -- executable = "<path-to-ruff-bin>",  -- Custom path to ruff
+                    -- config = "<path_to_custom_ruff_toml>",  -- Custom config for ruff to use
+                    -- extendSelect = { "I" },  -- Rules that are additionally used by ruff
+                    -- extendIgnore = { "C90" },  -- Rules that are additionally ignored by ruff
+                    -- format = { "I" },  -- Rules that are marked as fixable by ruff that should be fixed when running textDocument/formatting
+                    -- severities = { ["D212"] = "I" },  -- Optional table of rules where a custom severity is desired
+                    -- unsafeFixes = false,  -- Whether or not to offer unsafe fixes as code actions. Ignored with the "Fix All" action
+
+                    -- -- Rules that are ignored when a pyproject.toml or ruff.toml is present:
+                    -- lineLength = 88,  -- Line length to pass to ruff checking and formatting
+                    -- exclude = { "__about__.py" },  -- Files to be excluded by ruff checking
+                    -- select = { "F" },  -- Rules to be enabled by ruff
+                    -- ignore = { "D210" },  -- Rules to be ignored by ruff
+                    -- perFileIgnores = { ["__init__.py"] = "CPY001" },  -- Rules that should be ignored for specific files
+                    -- preview = false,  -- Whether to enable the preview style linting and formatting.
+                    -- targetVersion = "py310",  -- The minimum python version to target (applies for both linting and formatting).
+                },
+                pylsp_mypy = { enabled = true, },
+                pycodestyle = { enabled = false, },
+                pyflakes = { enabled = false, },
+                mccabe = { enabled = false, },
+                jedi_completion = { fuzzy = true },
+                flake8 = {
+                    enabled = false,
+                    maxLineLength = 90
+                },
+                black = {
+                    cache_config = true,
+                    enabled = true,
+                    line_length = 90,
                 }
             }
         }
@@ -41,6 +72,7 @@ lspconfig.perlls.setup {
     capabilities = capabilities,
 }
 
+-- TODO - test the other system verilog lsps
 lspconfig.verible.setup {
     capabilities = capabilities,
     root_dir = function(_)
@@ -50,6 +82,13 @@ lspconfig.verible.setup {
 
 lspconfig.lemminx.setup {
     capabilities = capabilities,
+}
+
+lspconfig.bashls.setup {
+    capabilities = capabilities,
+    root_dir = function(_)
+        return vim.loop.cwd()
+    end,
 }
 
 -- Use LspAttach autocommand to only map the following keys
@@ -66,7 +105,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             if desc then
                 desc = "LSP: " .. desc
             end
-            vim.keymap.set('n', keys, func, {buffer = ev.buf, desc = desc })
+            vim.keymap.set('n', keys, func, { buffer = ev.buf, desc = desc })
         end
 
         nmap('gD', vim.lsp.buf.declaration, "[g]oto [D]eclaration")

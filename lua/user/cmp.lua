@@ -8,6 +8,11 @@ if not snip_status_ok then
   return
 end
 
+local mason_status_ok, mason = pcall(require, "mason")
+if mason_status_ok then
+    mason.setup{}
+end
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()

@@ -86,8 +86,14 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig"
     use "hrsh7th/cmp-nvim-lsp"
 --  use "williamboman/nvim-lsp-installer"
---  use "williamboman/mason.nvim"
---  use "williamboman/mason-lspconfig.nvim"
+--    use "williamboman/mason.nvim"
+--    use "williamboman/mason-lspconfig.nvim"
+
+    -- linting
+    use "mfussenegger/nvim-lint"
+
+    -- commenting
+    use "terrortylor/nvim-comment"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

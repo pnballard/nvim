@@ -36,6 +36,7 @@ keymap("n", "<leader>x",  ":NvimTreeToggle<CR>", { noremap = true, silent = true
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true})
 keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", { noremap = true, silent = true})
 keymap("n", "<leader>fg", ":Telescope grep_string<CR>", { noremap = true, silent = true})
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true})
 keymap("n", "<leader>nh", ":nohlsearch<CR>", { noremap = true, silent = true})
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
