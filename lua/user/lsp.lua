@@ -1,5 +1,4 @@
--- FIXME - this slows down neovim, so enable only when debugging LSP issues
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
 
 local lspconfig = require('lspconfig')
 
