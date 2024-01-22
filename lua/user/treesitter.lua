@@ -15,5 +15,5 @@ configs.setup {
         disable = { "" },
         additional_vim_regex_highlighting = true,
     },
-    indent = { enable = ture, disable = { "yaml" } },
+    indent = { enable = true, disable = { "yaml" } },
 }

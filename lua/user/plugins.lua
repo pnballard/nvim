@@ -51,7 +51,7 @@ return packer.startup(function(use)
     use "windwp/nvim-autopairs"
     use "ludovicchabant/vim-gutentags"
 
---    use "kyazdani42/nvim-web-devicons"
+    -- use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
 
     -- Telescope
@@ -61,14 +61,15 @@ return packer.startup(function(use)
     -- Treesitter
     use "nvim-treesitter/nvim-treesitter"
     use "p00f/nvim-ts-rainbow"
---
---    -- colorschemes
---    use "ellisonleao/gruvbox.nvim"
---    use "Mofiqul/vscode.nvim"
---    use "marko-cerovac/material.nvim"
---    use "rebelot/kanagawa.nvim"
---    use "nyoom-engineering/oxocarbon.nvim"
---
+
+    -- colorschemes
+    use "ellisonleao/gruvbox.nvim"
+    use "Mofiqul/vscode.nvim"
+    use "marko-cerovac/material.nvim"
+    use "rebelot/kanagawa.nvim"
+    use "nyoom-engineering/oxocarbon.nvim"
+    use "folke/tokyonight.nvim"
+
     -- cmp
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
@@ -82,12 +83,12 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip"
     use "rafamadriz/friendly-snippets"
 
---    -- LSP
+    --    -- LSP
     use "neovim/nvim-lspconfig"
     use "hrsh7th/cmp-nvim-lsp"
---  use "williamboman/nvim-lsp-installer"
---    use "williamboman/mason.nvim"
---    use "williamboman/mason-lspconfig.nvim"
+    --  use "williamboman/nvim-lsp-installer"
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
 
     -- linting
     use "mfussenegger/nvim-lint"

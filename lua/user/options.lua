@@ -22,8 +22,13 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+if vim.loop.os_uname().sysname == "Linux" then
+    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+    vim.opt.undofile = true
+else
+    vim.opt.undolevels = 1000
+    vim.opt.guifont = "Hack:h12"
+end
 
 -- netrw customizations
 vim.g.netrw_banner = 0
