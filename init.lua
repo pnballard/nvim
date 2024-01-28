@@ -1,3 +1,4 @@
+require("user.detect_platform")
 require("user.colorscheme")
 require("user.options")
 require("user.keymaps")

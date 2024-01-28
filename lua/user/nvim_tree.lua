@@ -6,6 +6,9 @@ if not status_ok then
     return
 end
 
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+
 nvimtree.setup({
     disable_netrw = false,
     hijack_netrw = true,
@@ -22,7 +25,7 @@ nvimtree.setup({
         side = "left",
     },
     actions = {
-        open_file = { 
+        open_file = {
             quit_on_open = true,
         },
     },

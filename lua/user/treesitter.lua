@@ -4,7 +4,19 @@ if not status_ok then
 end
 
 configs.setup {
-    ensure_isntalled = "maintained",
+    ensure_isntalled = {
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "bash",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "perl",
+        "verilog",
+    },
     sync_install = false,
     ignore_install = { "" },
     autopairs = {

@@ -50,6 +50,7 @@ return packer.startup(function(use)
     use "moll/vim-bbye"
     use "windwp/nvim-autopairs"
     use "ludovicchabant/vim-gutentags"
+    use "christoomey/vim-tmux-navigator"
 
     -- use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
@@ -69,6 +70,8 @@ return packer.startup(function(use)
     use "rebelot/kanagawa.nvim"
     use "nyoom-engineering/oxocarbon.nvim"
     use "folke/tokyonight.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use "tanvirtin/monokai.nvim"
 
     -- cmp
     use "hrsh7th/nvim-cmp"

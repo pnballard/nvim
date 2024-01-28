@@ -5,10 +5,10 @@ local keymap = vim.api.nvim_set_keymap
 keymap("i", "jk", "<ESC>", { noremap = true, silent = true})
 
 -- Easy navigation for split windows
-keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true})
-keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true})
-keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true})
-keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true})
+-- keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true})
+-- keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true})
+-- keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true})
+-- keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true})
 
 -- Buffer switching
 keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true})

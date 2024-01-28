@@ -53,7 +53,10 @@ lspconfig.lemminx.setup {
 -- In windows dont' set up HDL and bash lsps
 if vim.loop.os_uname().sysname == "Linux" then
     -- Note - Needs a vhdl_ls.toml project file at project root
-    lspconfig.vhdl_ls.setup {
+    -- lspconfig.vhdl_ls.setup {
+    --     capabilities = capabilities,
+    -- }
+    lspconfig.hdl_checker.setup {
         capabilities = capabilities,
     }
 

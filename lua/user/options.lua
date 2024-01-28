@@ -21,13 +21,14 @@ vim.opt.termguicolors = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
-
+vim.opt.hlsearch = true
+vim.opt.incsearch = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+vim.opt.guifont = "Hack:h12"
+vim.opt.clipboard = unnamedplus
 if vim.loop.os_uname().sysname == "Linux" then
-    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-    vim.opt.undofile = true
-else
-    vim.opt.undolevels = 1000
-    vim.opt.guifont = "Hack:h12"
+    vim.opt.guicursor = ""
 end
 
 -- netrw customizations
