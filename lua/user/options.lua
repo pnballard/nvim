@@ -27,7 +27,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.guifont = "Hack:h12"
 vim.opt.clipboard = unnamedplus
-if vim.loop.os_uname().sysname == "Linux" then
+if vim.g.platform_detected == "RedHat" then
     vim.opt.guicursor = ""
 end
 
