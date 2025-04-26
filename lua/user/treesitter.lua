@@ -5,17 +5,18 @@ end
 
 configs.setup {
     ensure_isntalled = {
-        "c",
-        "lua",
-        "vim",
-        "vimdoc",
         "bash",
+        "c",
+        "cpp",
+        "lua",
         "make",
         "markdown",
         "markdown_inline",
-        "python",
         "perl",
+        "python",
         "verilog",
+        "vim",
+        "vimdoc",
     },
     sync_install = false,
     ignore_install = { "" },

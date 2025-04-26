@@ -31,6 +31,7 @@ local plugins = {
 
     -- Treesitter
     "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/playground",
     "p00f/nvim-ts-rainbow",
 
     -- colorschemes
