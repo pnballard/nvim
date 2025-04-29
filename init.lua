@@ -1,3 +1,5 @@
+
+vim.deprecate = function() end -- Removes deprecate warnings from :checkhealth
 require("user.detect_platform")
 require("user.options")
 require("user.keymaps")
