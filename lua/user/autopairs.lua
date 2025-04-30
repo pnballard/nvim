@@ -10,5 +10,5 @@ autopairs.setup {
         javascript = {'template_string'},
         java = false,-- don't check treesitter on java
     },
-    disable_fieltype = { "TelescopePrompt" },
+    disable_filetype = { "TelescopePrompt" },
 }
