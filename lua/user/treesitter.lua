@@ -4,17 +4,20 @@ if not status_ok then
 end
 
 configs.setup {
-    ensure_isntalled = {
+    ensure_installed = {
         "bash",
         "c",
         "cpp",
+        "ini",
         "lua",
         "make",
         "markdown",
         "markdown_inline",
         "perl",
         "python",
+        "rust",
         "verilog",
+        "vhdl",
         "vim",
         "vimdoc",
     },
