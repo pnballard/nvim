@@ -38,3 +38,16 @@ vim.g.netrw_keepdir = 20
 vim.g.netrw_liststyle = 3
 vim.g.netrw_hide = 0
 vim.g.netrw_browse_split = 2
+
+vim.api.nvim_create_autocmd(
+    {
+        'BufEnter',
+        'BufFilePost',
+    },
+    {
+    pattern = { '*.sv', "*.v", "*.vh", "*.vhd" },
+    callback = function()
+        vim.api.nvim_command("colorscheme badwolf")
+    end,
+    }
+)
