@@ -40,7 +40,5 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = t
 keymap("n", "<leader>nh", ":nohlsearch<CR>", { noremap = true, silent = true})
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
