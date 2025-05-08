@@ -1,94 +1,64 @@
 --vim.lsp.set_log_level("debug")
-local lspconfig = require('lspconfig')
+require('lspconfig')
 
+vim.lsp.config('lua_ls', {
+  on_init = function(client)
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if
+        path ~= vim.fn.stdpath('config')
+        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+      then
+        return
+      end
+    end
 
-vim.lsp.config('hdl_checker', {
-    filetypes = {'vhdl'}
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most
+        -- likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Tell the language server how to find Lua modules same way as Neovim
+        -- (see `:h lua-module-load`)
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+          -- Depending on the usage, you might want to add additional paths
+          -- here.
+          -- '${3rd}/luv/library'
+          -- '${3rd}/busted/library'
+        }
+        -- Or pull in all of 'runtimepath'.
+        -- NOTE: this is a lot slower and will cause issues when working on
+        -- your own configuration.
+        -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+        -- library = {
+        --   vim.api.nvim_get_runtime_file('', true),
+        -- }
+      }
+    })
+  end,
+  settings = {
+    Lua = {}
+  }
 })
 
 vim.lsp.enable('bashls')
+--vim.lsp.enable('hdl_checker')
+vim.lsp.enable('lemminx')
+vim.lsp.enable('lua_ls')
 vim.lsp.enable('perlls')
 vim.lsp.enable('pylsp')
-vim.lsp.enable('hdl_checker')
-vim.lsp.enable('lemminx')
-vim.lsp.enable('verible')
---local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
---
----- -- Global mappings.
---lspconfig.pylsp.setup {
---    capabilities = capabilities,
---    settings = {
---        pylsp = {
---            plugins = {
---                ruff = {
---                    enabled = true, -- Enable the plugin
---                },
---                --[[
---                pylsp_mypy = { enabled = true, },
---                pycodestyle = { enabled = false, },
---                pyflakes = { enabled = false, },
---                mccabe = { enabled = false, },
---                jedi_completion = { fuzzy = true },
---                flake8 = {
---                    enabled = false,
---                    maxLineLength = 90
---                },
---                black = {
---                    cache_config = true,
---                    enabled = true,
---                    line_length = 90,
---                } ]]
---            }
---        }
---    }
---}
----- -- C lsps require a project file, use ctags and linting instead
----- --lspconfig.clangd.setup { }
---
---lspconfig.lua_ls.setup {
---    capabilities = capabilities,
---    settings = {
---        Lua = {
---            diagnostics = {
---                globals = { 'vim' }
---            }
---        }
---    }
---}
---
----- xml lsp
---lspconfig.lemminx.setup {
---    capabilities = capabilities,
---}
---
----- In windows dont' set up HDL and bash lsps
---if vim.loop.os_uname().sysname == "Linux" then
---    -- Note - Needs a vhdl_ls.toml project file at project root
---    -- lspconfig.vhdl_ls.setup {
---    --     capabilities = capabilities,
---    -- }
-----    lspconfig.hdl_checker.setup {
-----        capabilities = capabilities,
-----    }
---
---    lspconfig.perlls.setup {
---        capabilities = capabilities,
---    }
---
---    lspconfig.verible.setup {
---        capabilities = capabilities,
---        root_dir = function(_)
---            return vim.loop.cwd()
---        end,
---    }
---
---    lspconfig.bashls.setup {
---        capabilities = capabilities,
---        root_dir = function(_)
---            return vim.loop.cwd()
---        end,
---    }
---end
+--vim.lsp.enable('svlangserver')
+vim.lsp.enable('svls')
+--vim.lsp.enable('verible')
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
